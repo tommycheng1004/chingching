@@ -7,8 +7,8 @@ export const BRAND = {
   advisor: "晴晴護理師 × 您的專屬財務顧問",
   ig: "@your_ig_here",
   line: "@your_line_here",
-  primary: "#db2777",
-  dark: "#9d174d",
+  primary: "#ec4899",
+  dark: "#db2777",
   navy: "#4a1730",
   light: "#fdf2f8",
   accent: "#f472b6",
@@ -89,7 +89,7 @@ export interface AllocationItem {
   color: string;
 }
 
-const C = ["#db2777", "#f472b6", "#9d174d", "#f0a8c0", "#fbbf24", "#a98c99"];
+const C = ["#db2777", "#f472b6", "#ec4899", "#f0a8c0", "#fbbf24", "#a98c99"];
 
 function alloc(items: [string, number][]): AllocationItem[] {
   return items.map(([label, percent], i) => ({ label, percent, color: C[i % C.length] }));

@@ -39,7 +39,7 @@ export async function sendReportEmail(opts: {
 function htmlBody(name: string, url: string) {
   return `
   <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#3a2230">
-    <h2 style="color:#9d174d;margin-bottom:8px">${name}，您的財務報告書已送達 📎</h2>
+    <h2 style="color:#db2777;margin-bottom:8px">${name}，您的財務報告書已送達 📎</h2>
     <p>嗨 ${name}，感謝您填寫財務諮詢表單！</p>
     <p>我們依您的填答，已為您生成一份<b>個人化財務健檢報告</b>，請見本信附件 PDF。</p>
     <p>報告中包含：</p>

@@ -13,7 +13,7 @@ import {
   Legend,
 } from "recharts";
 
-const COLORS = ["#db2777", "#f472b6", "#9d174d", "#f0a8c0", "#fbbf24", "#a98c99"];
+const COLORS = ["#db2777", "#f472b6", "#ec4899", "#f0a8c0", "#fbbf24", "#a98c99"];
 
 type Series = { name: string; count: number }[];
 
