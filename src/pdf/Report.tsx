@@ -266,39 +266,39 @@ export function Report({ data }: { data: ReportData }) {
     <Document>
       {/* P1 Cover */}
       <Page size="A4" style={{ fontFamily: "NotoSansTC" }}>
-        <View style={{ flex: 1, backgroundColor: BRAND.navy, padding: 40, color: "white", position: "relative" }}>
+        <View style={{ flex: 1, backgroundColor: BRAND.light, padding: 40, color: BRAND.text, position: "relative" }}>
           {/* Verified badge */}
           <View style={{ position: "absolute", top: 36, right: 36, alignItems: "center" }}>
-            <View style={{ width: 70, height: 70, borderRadius: 35, borderWidth: 2, borderColor: BRAND.accent, alignItems: "center", justifyContent: "center" }}>
-              <Text style={{ fontSize: 28, color: BRAND.accent }}>✓</Text>
+            <View style={{ width: 70, height: 70, borderRadius: 35, borderWidth: 2, borderColor: BRAND.dark, alignItems: "center", justifyContent: "center" }}>
+              <Text style={{ fontSize: 28, color: BRAND.dark }}>✓</Text>
             </View>
-            <Text style={{ fontSize: 7, color: BRAND.accent, marginTop: 4, letterSpacing: 1 }}>VERIFIED</Text>
-            <Text style={{ fontSize: 7, color: BRAND.accent }}>{data.reportNo}</Text>
+            <Text style={{ fontSize: 7, color: BRAND.dark, marginTop: 4, letterSpacing: 1 }}>VERIFIED</Text>
+            <Text style={{ fontSize: 7, color: BRAND.dark }}>{data.reportNo}</Text>
           </View>
 
           {/* Top label */}
           <View style={{ flexDirection: "row", alignItems: "center", marginTop: 50 }}>
-            <View style={{ width: 3, height: 14, backgroundColor: BRAND.accent, marginRight: 8 }} />
-            <Text style={{ fontSize: 11, letterSpacing: 3, color: BRAND.accent }}>{BRAND.nameEn}</Text>
+            <View style={{ width: 3, height: 14, backgroundColor: BRAND.dark, marginRight: 8 }} />
+            <Text style={{ fontSize: 11, letterSpacing: 3, color: BRAND.dark }}>{BRAND.nameEn}</Text>
           </View>
 
           {/* Big brand */}
-          <Text style={{ fontSize: 56, fontWeight: "bold", marginTop: 12, color: BRAND.accent, letterSpacing: 2 }}>{BRAND.name}</Text>
-          <Text style={{ fontSize: 14, letterSpacing: 8, color: "#94a3b8", marginTop: 4 }}>F · I · N · A · N · C · I · A · L</Text>
+          <Text style={{ fontSize: 56, fontWeight: "bold", marginTop: 12, color: BRAND.dark, letterSpacing: 2 }}>{BRAND.name}</Text>
+          <Text style={{ fontSize: 14, letterSpacing: 8, color: BRAND.muted, marginTop: 4 }}>F · I · N · A · N · C · I · A · L</Text>
 
           {/* PFP report */}
           <View style={{ flexDirection: "row", alignItems: "center", marginTop: 28 }}>
-            <View style={{ flex: 1, height: 1, backgroundColor: BRAND.accent, opacity: 0.4 }} />
-            <Text style={{ fontSize: 9, color: BRAND.accent, marginHorizontal: 10, letterSpacing: 2 }}>PFP REPORT v3.0</Text>
-            <View style={{ flex: 1, height: 1, backgroundColor: BRAND.accent, opacity: 0.4 }} />
+            <View style={{ flex: 1, height: 1, backgroundColor: BRAND.gold }} />
+            <Text style={{ fontSize: 9, color: BRAND.dark, marginHorizontal: 10, letterSpacing: 2 }}>PFP REPORT v3.0</Text>
+            <View style={{ flex: 1, height: 1, backgroundColor: BRAND.gold }} />
           </View>
 
-          <Text style={{ fontSize: 32, fontWeight: "bold", marginTop: 40, color: "white" }}>個人財務規劃</Text>
-          <Text style={{ fontSize: 32, fontWeight: "bold", color: "white" }}>分析報告書</Text>
-          <Text style={{ fontSize: 11, color: "#94a3b8", marginTop: 8, letterSpacing: 3 }}>PERSONAL FINANCIAL PLANNING REPORT</Text>
+          <Text style={{ fontSize: 32, fontWeight: "bold", marginTop: 40, color: BRAND.text }}>個人財務規劃</Text>
+          <Text style={{ fontSize: 32, fontWeight: "bold", color: BRAND.text }}>分析報告書</Text>
+          <Text style={{ fontSize: 11, color: BRAND.muted, marginTop: 8, letterSpacing: 3 }}>PERSONAL FINANCIAL PLANNING REPORT</Text>
 
           {/* Stats bar */}
-          <View style={{ marginTop: 24, backgroundColor: "#1e293b", borderRadius: 4, padding: 14, flexDirection: "row" }}>
+          <View style={{ marginTop: 24, backgroundColor: BRAND.dark, borderRadius: 4, padding: 14, flexDirection: "row" }}>
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 9, color: BRAND.accent, letterSpacing: 1 }}>HEALTH</Text>
               <Text style={{ fontSize: 13, color: "white", fontWeight: "bold", marginTop: 2 }}>{data.overall}/100</Text>
@@ -319,25 +319,25 @@ export function Report({ data }: { data: ReportData }) {
 
           {/* Bottom info grid */}
           <View style={{ position: "absolute", bottom: 60, left: 40, right: 40 }}>
-            <View style={{ height: 1, backgroundColor: BRAND.accent, opacity: 0.3, marginBottom: 14 }} />
+            <View style={{ height: 1, backgroundColor: BRAND.gold, marginBottom: 14 }} />
             <View style={{ flexDirection: "row" }}>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 9, color: BRAND.accent, letterSpacing: 2 }}>▸ CLIENT</Text>
-                <Text style={{ fontSize: 13, color: "white", fontWeight: "bold", marginTop: 4 }}>{name} 先生／女士</Text>
+                <Text style={{ fontSize: 9, color: BRAND.dark, letterSpacing: 2 }}>▸ CLIENT</Text>
+                <Text style={{ fontSize: 13, color: BRAND.text, fontWeight: "bold", marginTop: 4 }}>{name} 先生／女士</Text>
               </View>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 9, color: BRAND.accent, letterSpacing: 2 }}>▸ ISSUE DATE</Text>
-                <Text style={{ fontSize: 13, color: "white", fontWeight: "bold", marginTop: 4 }}>{data.today}</Text>
+                <Text style={{ fontSize: 9, color: BRAND.dark, letterSpacing: 2 }}>▸ ISSUE DATE</Text>
+                <Text style={{ fontSize: 13, color: BRAND.text, fontWeight: "bold", marginTop: 4 }}>{data.today}</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", marginTop: 14 }}>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 9, color: BRAND.accent, letterSpacing: 2 }}>▸ ADVISOR</Text>
-                <Text style={{ fontSize: 13, color: "white", fontWeight: "bold", marginTop: 4 }}>{BRAND.advisor}</Text>
+                <Text style={{ fontSize: 9, color: BRAND.dark, letterSpacing: 2 }}>▸ ADVISOR</Text>
+                <Text style={{ fontSize: 13, color: BRAND.text, fontWeight: "bold", marginTop: 4 }}>{BRAND.advisor}</Text>
               </View>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 9, color: BRAND.accent, letterSpacing: 2 }}>▸ PLAN</Text>
-                <Text style={{ fontSize: 13, color: "white", fontWeight: "bold", marginTop: 4 }}>{p.plans[0]}</Text>
+                <Text style={{ fontSize: 9, color: BRAND.dark, letterSpacing: 2 }}>▸ PLAN</Text>
+                <Text style={{ fontSize: 13, color: BRAND.text, fontWeight: "bold", marginTop: 4 }}>{p.plans[0]}</Text>
               </View>
             </View>
           </View>
