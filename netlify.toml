@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# 把重套件設為 external，避免 Netlify Function bundle 過大
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = [
+    "firebase-admin",
+    "@google-cloud/firestore",
+    "@google-cloud/storage",
+    "@react-pdf/renderer",
+    "nodemailer",
+    "@grpc/grpc-js",
+    "google-auth-library",
+    "google-gax",
+    "protobufjs",
+  ]

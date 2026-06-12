@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { -webkit-font-smoothing: antialiased; }
+body {
+  background: linear-gradient(180deg, #fdf2f8 0%, #fce7f3 100%);
+  color: #3a2230;
+  min-height: 100vh;
+}
