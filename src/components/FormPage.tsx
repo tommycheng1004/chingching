@@ -286,7 +286,7 @@ export default function FormPage({ bookingUrl }: { bookingUrl?: string }) {
           {step === 2 && <Step2 form={form} set={set} bump={bumpNum} toggle={toggleMulti} />}
           {step === 3 && <Step3 form={form} set={set} toggle={toggleMulti} />}
           {step === 4 && <Step4 form={form} set={set} toggle={toggleMulti} />}
-          {step === 5 && <Step5 form={form} set={set} toggle={toggleMulti} />}
+          {step === 5 && <Step5 form={form} set={set} toggle={toggleMulti} bookingUrl={BOOKING_URL} />}
 
           {error && (
             <div className="rounded-md bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-600">{error}</div>
@@ -591,7 +591,7 @@ function Step4({ form, set, toggle }: { form: FormState; set: any; toggle: any }
 }
 
 // ---------- STEP 5 ----------
-function Step5({ form, set, toggle }: { form: FormState; set: any; toggle: any }) {
+function Step5({ form, set, toggle, bookingUrl }: { form: FormState; set: any; toggle: any; bookingUrl: string }) {
   return (
     <>
       <SectionTag num={5} title="預約諮詢" desc="第一次接觸完全免費，先聊聊看適不適合你。" />
@@ -626,7 +626,7 @@ function Step5({ form, set, toggle }: { form: FormState; set: any; toggle: any }
       </Field>
 
       <Field label="線上預約諮詢時段" required hint="點按鈕到我的 Google 行事曆挑時段，回來再填寫已預約的時間">
-        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer"
+        <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
           className="block w-full text-center rounded-md border-2 border-brand bg-brand-light/60 hover:bg-brand-light text-brand-dark font-medium py-3 mb-3 transition">
           🗓️　前往 Google 行事曆預約　→
         </a>
