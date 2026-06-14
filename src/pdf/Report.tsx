@@ -12,6 +12,11 @@ Font.register({
     { src: "https://cdn.jsdelivr.net/gh/googlefonts/noto-cjk@main/Sans/OTF/TraditionalChinese/NotoSansCJKtc-Bold.otf", fontWeight: "bold" },
   ],
 });
+// 讓 PDF 能顯示 emoji（@react-pdf 預設不畫 emoji，需指定圖片來源）
+Font.registerEmojiSource({
+  format: "png",
+  url: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/",
+});
 Font.registerHyphenationCallback((word) => {
   if (/[　-鿿＀-￯]/.test(word)) {
     const out: string[] = [];
@@ -140,8 +145,8 @@ function RingScore({ score, size = 110 }: { score: number; size?: number }) {
       <Circle cx={cx} cy={cy} r={radius} stroke="#e5e7eb" strokeWidth={8} fill="none" />
       <Circle cx={cx} cy={cy} r={radius} stroke={color} strokeWidth={8} fill="none"
         strokeDasharray={`${filled} ${circ}`} transform={`rotate(-90 ${cx} ${cy})`} strokeLinecap="round" />
-      <Text x={cx} y={cy} style={{ fontSize: 22, fontWeight: "bold" }} fill={BRAND.text} textAnchor="middle">{sc}</Text>
-      <Text x={cx} y={cy + 12} style={{ fontSize: 9 }} fill={color} textAnchor="middle">{status}</Text>
+      <Text x={cx} y={cy} style={{ fontSize: 22, fontWeight: "bold", fontFamily: "NotoSansTC" }} fill={BRAND.text} textAnchor="middle">{sc}</Text>
+      <Text x={cx} y={cy + 12} style={{ fontSize: 9, fontFamily: "NotoSansTC" }} fill={color} textAnchor="middle">{status}</Text>
     </Svg>
   );
 }
@@ -196,8 +201,8 @@ function RadarChart({ scores, size = 200 }: { scores: { label: string; score: nu
         const [x, y] = point(i, 1.18);
         return (
           <React.Fragment key={i}>
-            <Text x={x} y={y - 1} style={{ fontSize: 7.5 }} fill={BRAND.muted} textAnchor="middle">{it.label}</Text>
-            <Text x={x} y={y + 9} style={{ fontSize: 9, fontWeight: "bold" }} fill={BRAND.primary} textAnchor="middle">{it.score}</Text>
+            <Text x={x} y={y - 1} style={{ fontSize: 7.5, fontFamily: "NotoSansTC" }} fill={BRAND.muted} textAnchor="middle">{it.label}</Text>
+            <Text x={x} y={y + 9} style={{ fontSize: 9, fontWeight: "bold", fontFamily: "NotoSansTC" }} fill={BRAND.primary} textAnchor="middle">{it.score}</Text>
           </React.Fragment>
         );
       })}
@@ -236,12 +241,12 @@ function LineChart({
       {yLabels.map((v, i) => (
         <React.Fragment key={i}>
           <Line x1={padding.left} y1={y(v)} x2={padding.left + W} y2={y(v)} stroke="#f1f5f9" strokeWidth={0.5} />
-          <Text x={padding.left - 4} y={y(v) + 3} style={{ fontSize: 7 }} fill={BRAND.muted} textAnchor="end">{yFmt(v)}</Text>
+          <Text x={padding.left - 4} y={y(v) + 3} style={{ fontSize: 7, fontFamily: "NotoSansTC" }} fill={BRAND.muted} textAnchor="end">{yFmt(v)}</Text>
         </React.Fragment>
       ))}
       {/* x axis */}
       {xLabels.map((v, i) => (
-        <Text key={i} x={x(i)} y={padding.top + H + 12} style={{ fontSize: 7 }} fill={BRAND.muted} textAnchor="middle">{v}年</Text>
+        <Text key={i} x={x(i)} y={padding.top + H + 12} style={{ fontSize: 7, fontFamily: "NotoSansTC" }} fill={BRAND.muted} textAnchor="middle">{v}年</Text>
       ))}
       {/* lines */}
       {cleanData.map((series, idx) => {
@@ -1044,7 +1049,7 @@ export function Report({ data }: { data: ReportData }) {
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             {data.subScores.map((sub) => {
               const c = sub.score >= 70 ? BRAND.success : sub.score >= 40 ? BRAND.warn : BRAND.danger;
-              const icon = sub.key === "saving" ? "💰" : sub.key === "reserve" ? "🏦" : sub.key === "debt" ? "🧾" : sub.key === "protection" ? "🛡" : "📈";
+              const icon = sub.key === "saving" ? "💰" : sub.key === "reserve" ? "🏦" : sub.key === "debt" ? "💳" : sub.key === "protection" ? "🔒" : "📈";
               const desc =
                 sub.key === "saving" ? `儲蓄率 ${data.cashflow.savingRatePct}%，目標推進至 20% 以上。` :
                 sub.key === "reserve" ? `目前 ${data.reserve.months} 個月，先補到 3 個月。` :
