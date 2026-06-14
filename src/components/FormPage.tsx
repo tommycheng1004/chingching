@@ -71,7 +71,7 @@ const ADVANCED = [
 ] as const;
 
 // 顧問的 Google Calendar 預約連結（之後請改成顧問自己的）
-const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "https://calendar.app.google/example";
+const DEFAULT_BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "https://calendar.app.google/example";
 
 const PLANS = [
   {
@@ -133,7 +133,8 @@ const EMPTY: FormState = {
   plans: [], booked_slot: "", district: "", note: "",
 };
 
-export default function FormPage() {
+export default function FormPage({ bookingUrl }: { bookingUrl?: string }) {
+  const BOOKING_URL = bookingUrl || DEFAULT_BOOKING_URL;
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);

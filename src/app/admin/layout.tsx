@@ -15,6 +15,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin" className="font-bold text-brand-dark">🌸 一針見血理財術 後台</Link>
           <Link href="/admin" className="text-sm text-gray-600 hover:text-brand-dark">名單</Link>
           <Link href="/admin/dashboard" className="text-sm text-gray-600 hover:text-brand-dark">儀表板</Link>
+          <Link href="/admin/settings" className="text-sm text-gray-600 hover:text-brand-dark">設定</Link>
           <div className="ml-auto">
             <LogoutButton />
           </div>

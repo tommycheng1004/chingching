@@ -44,3 +44,30 @@ export function publicFileUrl(path: string): string {
   const b = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!;
   return `https://firebasestorage.googleapis.com/v0/b/${b}/o/${encodeURIComponent(path)}?alt=media`;
 }
+
+// ───────── 顧問可在後台自行調整的站台設定 ─────────
+export const SETTINGS = "settings";
+export const SITE_DOC = "site";
+
+export interface SiteSettings {
+  booking_url: string;
+}
+
+const DEFAULT_BOOKING_URL =
+  process.env.NEXT_PUBLIC_BOOKING_URL || "https://calendar.app.google/example";
+
+/** 讀站台設定；Firestore 尚未啟用或讀取失敗時，退回環境變數預設值（不會壞） */
+export async function getSiteSettings(): Promise<SiteSettings> {
+  try {
+    const snap = await firestore().collection(SETTINGS).doc(SITE_DOC).get();
+    const data = (snap.exists ? snap.data() : {}) as Partial<SiteSettings>;
+    return { booking_url: data.booking_url || DEFAULT_BOOKING_URL };
+  } catch {
+    return { booking_url: DEFAULT_BOOKING_URL };
+  }
+}
+
+/** 後台儲存設定（只更新有傳入的欄位） */
+export async function saveSiteSettings(patch: Partial<SiteSettings>): Promise<void> {
+  await firestore().collection(SETTINGS).doc(SITE_DOC).set(patch, { merge: true });
+}
